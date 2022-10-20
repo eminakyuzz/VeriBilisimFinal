@@ -1,0 +1,61 @@
+﻿@model IEnumerable<VeriBilisimFinal.Models.Aday>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Aday Listesi</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Aday" asp-action="Create" class="btn btn-primary"> Yeni Aday Personel Oluştur</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Aday Adı</th>
+                    <th>Aday Soyadı</th>
+                    <th>İşyeri</th>
+                    <th>Pozisyon</th>
+                    <th>Düzenle</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="20%">@item.AdayAdi</td>
+                        <td width="20%">@item.AdaySoyadi</td>
+
+                        <td width="20%">@item.IsyeriAdi</td>
+                        <td width="20%">@item.Pozisyon</td>
+                        <td width="20%">
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Aday" asp-action="Update" asp-route-Id="@item.AdayID" class="btn btn-primary mx-1">Güncelle</a>
+                                <a asp-controller="Aday" asp-action="Delete" asp-route-Id="@item.AdayID" class="btn btn-danger mx-1">Sil</a>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Henüz bir Aday Oluşturulmadı</p>
+    }
+
+
+</div>
+
+
+
+
+
+
